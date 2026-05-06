@@ -20,14 +20,16 @@
   <div class="card" id="form-card">
 
     <div class="field">
-      <label for="f-nome">Nome completo</label>
-      <input type="text" id="f-nome" autocomplete="name">
-    </div>
+  <label for="f-nome">Nome completo</label>
+  <input type="text" id="f-nome" autocomplete="name">
+</div>
 
-    <div class="field">
-      <label for="f-contacto">Contacto (telemóvel)</label>
-      <input type="text" id="f-contacto" autocomplete="tel">
-    </div>
+   <div class="field">
+  <label for="f-contacto">Contacto (telemóvel)</label>
+  <input type="tel" id="f-contacto" autocomplete="tel">
+  <span id="contacto-err" style="display:none; color:#c1440e; font-size:12px; margin-top:4px;">Coloque um número válido</span>
+</div>
+
 
     <div class="field">
       <label for="f-turma">Turma</label>
@@ -47,17 +49,13 @@
     </div>
 
 <div class="field">
-  <label for="f-notas">Informações Adicionais (opcional)</label>
-  <textarea id="f-notas" placeholder="Algo que queiras dizer ou perguntar..." rows="3"></textarea>
+  <label for="f-Informações Adicionais">Informações Adicionais (opcional)</label>
+  <textarea id="f-Informações Adicionais" placeholder="Algo que queiras dizer ou perguntar..." rows="3"></textarea>
 </div>
 
     <button class="submit-btn" id="submit-btn" type="button" onclick="submitForm()">
       Confirmar inscrição
     </button>
-
-    <div class="error-msg" id="error-msg">
-      Por favor preenche todos os campos e seleciona pelo menos um horário.
-    </div>
 
   </div>
 
@@ -70,5 +68,8 @@
   </div>
 
   <script src="Form.js"></script>
+</body>
+</html>
+
 </body>
 </html>
