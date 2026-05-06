@@ -595,3 +595,73 @@ select:focus {
 
 .custom-option:hover { background: rgba(193,68,14,0.06); }
 .custom-option.hidden { display: none; }
+
+
+.days-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.day-chip {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.12);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  background: rgba(248,244,238,0.95);
+  color: var(--ink);
+  transition: all 0.15s;
+  position: relative;
+}
+
+.day-chip.active {
+  background: #c1440e;
+  border-color: #c1440e;
+  color: white;
+}
+
+.day-chip.has-slots {
+  border-color: #c1440e;
+  color: #c1440e;
+}
+
+.day-chip.active.has-slots {
+  color: white;
+}
+
+.hours-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+
+.hours-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hour-chip {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.12);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  background: rgba(248,244,238,0.95);
+  color: var(--ink);
+  transition: all 0.15s;
+}
+
+.hour-chip.on {
+  background: #1d4e89;
+  border-color: #1d4e89;
+  color: white;
+} 
