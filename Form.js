@@ -4,6 +4,7 @@ const DAYS  = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'];
 const HOURS = ['10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h'];
 
 const selected = new Set();
+let activeDay = null;
 
 function abrirDropdown() {
   document.getElementById('escola-dropdown').classList.add('open');
@@ -28,54 +29,66 @@ function selecionarEscola(el) {
 }
 
 function buildGrid() {
-  const table = document.getElementById('avail-grid');
+  const container = document.getElementById('avail-container');
 
-  const thead = document.createElement('thead');
-  const headRow = document.createElement('tr');
-  const emptyTh = document.createElement('th');
-  emptyTh.className = 'hour-col';
-  headRow.appendChild(emptyTh);
-
+  // Botões dos dias
+  const daysRow = document.createElement('div');
+  daysRow.className = 'days-chips';
   DAYS.forEach(day => {
-    const th = document.createElement('th');
-    th.textContent = day.slice(0, 3);
-    headRow.appendChild(th);
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'day-chip';
+    btn.textContent = day.slice(0, 3);
+    btn.dataset.day = day;
+    btn.addEventListener('click', () => selectDay(btn, day));
+    daysRow.appendChild(btn);
   });
-  thead.appendChild(headRow);
-  table.appendChild(thead);
+  container.appendChild(daysRow);
 
-  const tbody = document.createElement('tbody');
+  // Área das horas
+  const hoursWrap = document.createElement('div');
+  hoursWrap.id = 'hours-wrap';
+  hoursWrap.style.display = 'none';
+
+  const hoursLabel = document.createElement('div');
+  hoursLabel.id = 'hours-label';
+  hoursLabel.className = 'hours-label';
+  hoursWrap.appendChild(hoursLabel);
+
+  const hoursRow = document.createElement('div');
+  hoursRow.className = 'hours-chips';
+  hoursRow.id = 'hours-row';
   HOURS.forEach(hour => {
-    const tr = document.createElement('tr');
-
-    const hourTd = document.createElement('td');
-    hourTd.className = 'hour-col';
-    const hourLabel = document.createElement('span');
-    hourLabel.style.cssText = 'font-size:11px;color:var(--ink-faint);padding-right:8px;';
-    hourLabel.textContent = hour;
-    hourTd.appendChild(hourLabel);
-    tr.appendChild(hourTd);
-
-    DAYS.forEach(day => {
-      const td = document.createElement('td');
-      const btn = document.createElement('button');
-      btn.className = 'cell-btn';
-      btn.type = 'button';
-      btn.dataset.slot = `${day}|${hour}`;
-      btn.setAttribute('aria-label', `${day} ${hour}`);
-      btn.addEventListener('click', () => toggleSlot(btn));
-      td.appendChild(btn);
-      tr.appendChild(td);
-    });
-
-    tbody.appendChild(tr);
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'hour-chip';
+    btn.textContent = hour;
+    btn.dataset.hour = hour;
+    btn.addEventListener('click', () => toggleHour(btn));
+    hoursRow.appendChild(btn);
   });
-
-  table.appendChild(tbody);
+  hoursWrap.appendChild(hoursRow);
+  container.appendChild(hoursWrap);
 }
 
-function toggleSlot(btn) {
-  const slot = btn.dataset.slot;
+function selectDay(btn, day) {
+  document.querySelectorAll('.day-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeDay = day;
+
+  document.getElementById('hours-wrap').style.display = 'block';
+  document.getElementById('hours-label').textContent = day;
+
+  // Atualiza os botões das horas para refletir as seleções deste dia
+  document.querySelectorAll('.hour-chip').forEach(b => {
+    const slot = `${day}|${b.dataset.hour}`;
+    b.classList.toggle('on', selected.has(slot));
+  });
+}
+
+function toggleHour(btn) {
+  if (!activeDay) return;
+  const slot = `${activeDay}|${btn.dataset.hour}`;
   if (selected.has(slot)) {
     selected.delete(slot);
     btn.classList.remove('on');
@@ -83,6 +96,12 @@ function toggleSlot(btn) {
     selected.add(slot);
     btn.classList.add('on');
   }
+
+  // Marca o dia como tendo seleções
+  document.querySelectorAll('.day-chip').forEach(b => {
+    const hasSlots = HOURS.some(h => selected.has(`${b.dataset.day}|${h}`));
+    b.classList.toggle('has-slots', hasSlots);
+  });
 }
 
 async function submitForm() {
@@ -95,11 +114,9 @@ async function submitForm() {
 
   const contactoErr = document.getElementById('contacto-err');
   const contactoValido = /^9\d{8}$/.test(contacto);
-
   contactoErr.style.display = contactoValido ? 'none' : 'block';
 
   if (!nome || !contactoValido || !turma || !escola || selected.size === 0) {
-    err.style.display = 'block';
     return;
   }
 
