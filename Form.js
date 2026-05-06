@@ -71,13 +71,15 @@ async function submitForm() {
   const notasEl  = document.getElementById('f-notas');
   const notas    = notasEl ? notasEl.value.trim() : '';
 
-  const err = document.getElementById('error-msg');
+  const contactoErr = document.getElementById('contacto-err');
+  const contactoValido = /^9\d{8}$/.test(contacto);
 
-  if (!nome || !contacto || !turma || !escola || selected.size === 0) {
+  contactoErr.style.display = contactoValido ? 'none' : 'block';
+
+  if (!nome || !contactoValido || !turma || !escola || selected.size === 0) {
     err.style.display = 'block';
     return;
   }
-  err.style.display = 'none';
 
   document.getElementById('submit-btn').disabled = true;
 
@@ -93,12 +95,12 @@ async function submitForm() {
     .join(', ');
 
   const payload = [{
-    Nome: nome,
+    'Nome Completo': nome,
     Contacto: contacto,
     Turma: turma,
     Escola: escola,
     Disponibilidade: dispStr,
-    Notas: notas
+    'Informações Adicionais': notas,
   }];
 
   fetch(SHEET_URL, {
