@@ -4,7 +4,7 @@
 //  Web app (acesso: Anyone)
 // ============================================================
 
-const SHEET_NAME = 'Inscrições';
+const SHEET_NAME = 'Inscrições Grupos';
 
 function doPost(e) {
   try {
@@ -60,7 +60,7 @@ function getOrCreateSheet() {
 
   if (!sheet) {
     sheet = ss.insertSheet(SHEET_NAME);
-    sheet.appendRow(['Data', 'Nome', 'Contacto', 'Turma', 'Escola', 'Disponibilidade']);
+    sheet.appendRow(['Nome', 'Contacto', 'Turma', 'Escola', 'Disponibilidade','Informações Adicionais']);
     sheet.getRange(1, 1, 1, 6).setFontWeight('bold');
     sheet.setFrozenRows(1);
   }
