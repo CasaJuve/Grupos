@@ -65,13 +65,46 @@
   </div>
 
   <div class="success-screen" id="success-screen">
-    <div class="success-icon">
-      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <h2>Inscrição confirmada!</h2>
-    <p>A tua inscrição foi registada com sucesso.<br>Em breve entraremos em contacto contigo<br>para confirmar o teu horário.</p>
-    <img src="logo.png" alt="Casa da Juventude Guimarães" style="width: 130px; display: block; margin: 2rem auto 0; opacity: 0.8;">
+  <div class="success-icon">
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
   </div>
+  <h2>Inscrição confirmada!</h2>
+  <p>A tua inscrição foi registada com sucesso.<br>Em breve entraremos em contacto contigo<br>para confirmar o teu horário.</p>
+
+  <div class="activity-section">
+    <p class="activity-question">Que atividade gostarias de fazer com o teu grupo?</p>
+    <div class="activity-grid">
+      <div class="activity-card" onclick="selectActivity(this, 'Karting')">
+        <img src="karting.jpg" alt="Karting">
+        <span>Karting</span>
+      </div>
+      <div class="activity-card" onclick="selectActivity(this, 'LaserTag')">
+        <img src="lasertag.jpg" alt="LaserTag">
+        <span>LaserTag</span>
+      </div>
+      <div class="activity-card" onclick="selectActivity(this, 'Escape Room')">
+        <img src="escaperoom.jpg" alt="Escape Room">
+        <span>Escape Room</span>
+      </div>
+      <div class="activity-card" onclick="selectActivity(this, 'Paintball')">
+        <img src="paintball.jpg" alt="Paintball">
+        <span>Paintball</span>
+      </div>
+      <div class="activity-card" onclick="selectActivity(this, 'Spa')">
+        <img src="spa.jpg" alt="Spa">
+        <span>Spa</span>
+      </div>
+      <div class="activity-card" onclick="selectActivity(this, 'Hipismo')">
+        <img src="hipismo.jpg" alt="Hipismo">
+        <span>Hipismo</span>
+      </div>
+    </div>
+    <button class="submit-btn" id="activity-btn" onclick="submitActivity()" disabled>Confirmar atividade</button>
+    <div id="activity-success" style="display:none; margin-top:1rem; color: var(--green); font-weight:600;">Obrigado! A tua escolha foi guardada ✓</div>
+  </div>
+
+  <img src="logo.png" alt="Casa da Juventude Guimarães" style="width:130px; display:block; margin:2rem auto 0; opacity:0.8;">
+</div>
 
   <script src="Form.js"></script>
 </body>
