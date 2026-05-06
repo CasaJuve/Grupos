@@ -5,6 +5,28 @@ const HOURS = ['10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h'];
 
 const selected = new Set();
 
+function abrirDropdown() {
+  document.getElementById('escola-dropdown').classList.add('open');
+  filtrarEscolas();
+}
+
+function fecharDropdown() {
+  document.getElementById('escola-dropdown').classList.remove('open');
+}
+
+function filtrarEscolas() {
+  const val = document.getElementById('f-escola').value.toLowerCase();
+  document.querySelectorAll('.custom-option').forEach(opt => {
+    opt.classList.toggle('hidden', !opt.textContent.toLowerCase().includes(val));
+  });
+  document.getElementById('escola-dropdown').classList.add('open');
+}
+
+function selecionarEscola(el) {
+  document.getElementById('f-escola').value = el.textContent;
+  document.getElementById('escola-dropdown').classList.remove('open');
+}
+
 function buildGrid() {
   const table = document.getElementById('avail-grid');
 
