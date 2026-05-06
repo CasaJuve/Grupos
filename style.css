@@ -433,11 +433,9 @@ textarea:focus {
 
 .success-screen h2 {
   font-family: 'DM Serif Display', serif;
-
   font-size: 42px;
   font-weight: 400;
-
-  margin-bottom:0.3rem;
+  margin-bottom: 0.3rem;
 }
 
 .success-screen p {
@@ -543,13 +541,6 @@ h1 {
   font-weight: 700;
   letter-spacing: -0.04em;
 }
-}
-
-h1 {
-  font-weight: 700;
-  letter-spacing: -0.04em;
-}
-
 select {
   width: 100%;
   padding: 15px 16px;
@@ -668,7 +659,7 @@ select:focus {
 } 
 
 .activity-section {
-  margin-top: 2rem;
+  margin-top: 0.3rem;
   text-align: center;
 }
 
