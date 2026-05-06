@@ -548,3 +548,23 @@ h1 {
   font-weight: 700;
   letter-spacing: -0.04em;
 }
+
+select {
+  width: 100%;
+  padding: 15px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(248,244,238,0.95);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+  appearance: auto;
+}
+
+select:focus {
+  border-color: rgba(193,68,14,0.28);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(193,68,14,0.10);
+}rr5
