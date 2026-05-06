@@ -106,6 +106,7 @@ function toggleHour(btn) {
 
 async function submitForm() {
   const nome     = document.getElementById('f-nome').value.trim();
+  lastNome = nome;
   const contacto = document.getElementById('f-contacto').value.trim();
   const turma    = document.getElementById('f-turma').value.trim();
   const escola   = document.getElementById('f-escola').value.trim();
