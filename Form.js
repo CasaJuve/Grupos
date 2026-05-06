@@ -168,7 +168,7 @@ function submitActivity() {
   if (!selectedActivity) return;
   document.getElementById('activity-btn').disabled = true;
 
-  const url = `${SHEET_URL}/Nome Completo/${encodeURIComponent(lastNome)}`;
+  const url = `${SHEET_URL}/Nome%20Completo/${encodeURIComponent(lastNome)}`;
   console.log('PATCH URL:', url);
   console.log('Atividade:', selectedActivity);
 
