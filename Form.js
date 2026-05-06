@@ -168,15 +168,21 @@ function submitActivity() {
   if (!selectedActivity) return;
   document.getElementById('activity-btn').disabled = true;
 
-  fetch(`${SHEET_URL}/Nome Completo/${encodeURIComponent(lastNome)}`, {
+  const url = `${SHEET_URL}/Nome Completo/${encodeURIComponent(lastNome)}`;
+  console.log('PATCH URL:', url);
+  console.log('Atividade:', selectedActivity);
+
+  fetch(url, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ data: { 'Atividade': selectedActivity } })
-  }).catch(() => {});
+  })
+  .then(r => r.json())
+  .then(d => console.log('Resposta:', d))
+  .catch(e => console.error('Erro:', e));
 
   document.getElementById('activity-success').style.display = 'block';
   document.getElementById('activity-btn').style.display = 'none';
   document.querySelectorAll('.activity-card').forEach(c => c.style.pointerEvents = 'none');
 }
-
 document.addEventListener('DOMContentLoaded', buildGrid);
