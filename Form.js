@@ -153,4 +153,31 @@ async function submitForm() {
   document.getElementById('success-screen').style.display = 'block';
 }
 
+let selectedActivity = null;
+let lastNome = '';
+
+function selectActivity(el, name) {
+  document.querySelectorAll('.activity-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedActivity = name;
+  document.getElementById('activity-btn').disabled = false;
+}
+
+function submitActivity() {
+  if (!selectedActivity) return;
+  document.getElementById('activity-btn').disabled = true;
+
+  const payload = [{ 'Nome Completo': lastNome, 'Atividade': selectedActivity }];
+
+  fetch(SHEET_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).catch(() => {});
+
+  document.getElementById('activity-success').style.display = 'block';
+  document.getElementById('activity-btn').style.display = 'none';
+  document.querySelectorAll('.activity-card').forEach(c => c.style.pointerEvents = 'none');
+}
+
 document.addEventListener('DOMContentLoaded', buildGrid);
