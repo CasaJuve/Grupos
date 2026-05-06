@@ -474,6 +474,32 @@ textarea:focus {
   font-size: 9px;
   padding: 4px 2px;
 }
+
+.availability-grid {
+  margin: 0 -0.5rem;
+}
+
+.grid-table {
+  min-width: 0;
+  border-spacing: 2px;
+  width: 100%;
+}
+
+.cell-btn {
+  min-width: 0;
+  height: 30px;
+  border-radius: 8px;
+}
+
+.grid-table th {
+  font-size: 9px;
+  padding: 3px 1px;
+}
+
+.grid-table th.hour-col {
+  width: 32px;
+  font-size: 9px;
+}
 }
 
 @keyframes fadeUp {
@@ -510,6 +536,12 @@ label,
 .hour-col span {
   font-weight: 700;
   color: #000;
+}
+
+h1 {
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
 }
 
 h1 {
