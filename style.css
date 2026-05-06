@@ -241,10 +241,9 @@ textarea:focus {
 
 .grid-table {
   width: 100%;
-  min-width: 430px;
-
+  min-width: 0px;
   border-collapse: separate;
-  border-spacing: 5px;
+  border-spacing: 3px;
 }
 
 .grid-table th {
@@ -269,8 +268,8 @@ textarea:focus {
 
 .cell-btn {
   width: 100%;
-  min-width: 50px;
-  height: 44px;
+  min-width: 36px;
+  height: 36px;
 
   border-radius: 14px;
 
@@ -460,6 +459,21 @@ textarea:focus {
   h1 {
     font-size: 50px;
   }
+
+  .grid-table {
+  border-spacing: 2px;
+}
+
+.cell-btn {
+  min-width: 30px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+.grid-table th {
+  font-size: 9px;
+  padding: 4px 2px;
+}
 }
 
 @keyframes fadeUp {
