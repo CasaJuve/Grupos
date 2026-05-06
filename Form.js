@@ -91,14 +91,14 @@ async function submitForm() {
     .map(s => s.replace('|', ' '))
     .join(', ');
  
-  const payload = [{
-    Nome: nome,
+  const payload = { data: [{
+    'Nome Completo': nome,
     Contacto: contacto,
     Turma: turma,
     Escola: escola,
     Disponibilidade: dispStr,
-    Notas: notas
-  }];
+    'Informações Adicionais': notas
+}]};
  
   fetch(SHEET_URL, {
     method: 'POST',
