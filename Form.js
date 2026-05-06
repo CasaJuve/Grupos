@@ -1,4 +1,4 @@
-const SHEET_URL = 'https://sheetdb.io/api/v1/nyti730suns7g';
+const SHEET_URL = 'https://sheetdb.io/api/v1/a4uec69xydxbr';
  
 const DAYS  = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'];
 const HOURS = ['10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h'];
@@ -68,7 +68,7 @@ async function submitForm() {
   const contacto = document.getElementById('f-contacto').value.trim();
   const turma    = document.getElementById('f-turma').value.trim();
   const escola   = document.getElementById('f-escola').value.trim();
-  const InformaçõesAdicionais    = document.getElementById('f-Informações Adicionais').value.trim();
+  const notas    = document.getElementById('f-notas').value.trim();
  
   const err = document.getElementById('error-msg');
  
@@ -91,16 +91,14 @@ async function submitForm() {
     .map(s => s.replace('|', ' '))
     .join(', ');
  
-  const payload = {
-    data: [{
-      Nome: nome,
-      Contacto: contacto,
-      Turma: turma,
-      Escola: escola,
-      Disponibilidade: dispStr,
-      InformaçõesAdicionais: InformaçõesAdicionais,
-    }]
-  };
+  const payload = [{
+    Nome: nome,
+    Contacto: contacto,
+    Turma: turma,
+    Escola: escola,
+    Disponibilidade: dispStr,
+    Notas: notas
+  }];
  
   fetch(SHEET_URL, {
     method: 'POST',
