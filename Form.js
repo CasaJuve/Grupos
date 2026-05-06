@@ -168,12 +168,10 @@ function submitActivity() {
   if (!selectedActivity) return;
   document.getElementById('activity-btn').disabled = true;
 
-  const payload = [{ 'Nome Completo': lastNome, 'Atividade': selectedActivity }];
-
-  fetch(SHEET_URL, {
-    method: 'POST',
+  fetch(`${SHEET_URL}/Nome Completo/${encodeURIComponent(lastNome)}`, {
+    method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    body: JSON.stringify({ data: { 'Atividade': selectedActivity } })
   }).catch(() => {});
 
   document.getElementById('activity-success').style.display = 'block';
