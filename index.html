@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <div class="header">
     <div class="header-eyebrow">Reuniões semanais</div>
     <h1>Junta-te ao grupo</h1>
@@ -19,46 +20,43 @@
   <div class="card" id="form-card">
 
     <div class="field">
-  <label for="f-nome">Nome completo</label>
-  <input type="text" id="f-nome" autocomplete="name">
-</div>
-
-   <div class="field">
-  <label for="f-contacto">Contacto</label>
-  <input type="tel" id="f-contacto" autocomplete="tel">
-  <span id="contacto-err" style="display:none; color:#c1440e; font-size:12px; margin-top:4px;">Coloque um número válido</span>
-</div>
-
-<div class="field">
-  <label for="f-escola">Escola</label>
-  <div class="custom-select" id="escola-wrapper">
-    <input type="text" id="f-escola" placeholder="Escreve ou seleciona a escola..." autocomplete="off" onInput="filtrarEscolas()" onFocus="abrirDropdown()" onBlur="fecharDropdown()">
-    <div class="custom-dropdown" id="escola-dropdown">
-      <div class="custom-option" onMouseDown="selecionarEscola(this)">Escola Secundária Francisco de Holanda</div>
-      <div class="custom-option" onMouseDown="selecionarEscola(this)">Escola Secundária Martins Sarmento</div>
-      <div class="custom-option" onMouseDown="selecionarEscola(this)">Escola Básica de Urgeses</div>
-      <div class="custom-option" onMouseDown="selecionarEscola(this)">Outra</div>
+      <label for="f-nome">Nome completo</label>
+      <input type="text" id="f-nome" autocomplete="name">
     </div>
-  </div>
-  <span id="escola-err" style="display:none; color:#c1440e; font-size:12px; margin-top:4px;">Seleciona ou escreve uma escola</span>
-</div>
+
+    <div class="field">
+      <label for="f-contacto">Contacto</label>
+      <input type="tel" id="f-contacto" autocomplete="tel">
+      <span id="contacto-err" style="display:none; color:#c1440e; font-size:12px; margin-top:4px;">Coloque um número válido</span>
+    </div>
+
+    <div class="field">
+      <label for="f-escola">Escola</label>
+      <div class="custom-select" id="escola-wrapper">
+        <input type="text" id="f-escola" placeholder="Escreve ou seleciona a escola..." autocomplete="off" onInput="filtrarEscolas()" onFocus="abrirDropdown()" onBlur="fecharDropdown()">
+        <div class="custom-dropdown" id="escola-dropdown">
+          <div class="custom-option" onMouseDown="selecionarEscola(this)">Escola Secundária Francisco de Holanda</div>
+          <div class="custom-option" onMouseDown="selecionarEscola(this)">Escola Secundária Martins Sarmento</div>
+          <div class="custom-option" onMouseDown="selecionarEscola(this)">Escola Básica de Urgeses</div>
+          <div class="custom-option" onMouseDown="selecionarEscola(this)">Outra</div>
+        </div>
+      </div>
+    </div>
 
     <div class="field">
       <label for="f-turma">Turma</label>
-      <input type="text" id="f-turma" >
+      <input type="text" id="f-turma">
     </div>
 
     <div class="section-label">Disponibilidade</div>
-    <p class="section-hint">Seleciona os dias e horas em que podes estar presente (reunião = 1h)</p>
+    <p class="section-hint">Escolhe um dia e seleciona os horários disponíveis (reunião = 1h)</p>
 
-    <div class="availability-grid">
-      <table class="grid-table" id="avail-grid"></table>
+    <div id="avail-container"></div>
+
+    <div class="field" style="margin-top: 1.5rem;">
+      <label for="f-notas">Informações Adicionais (opcional)</label>
+      <textarea id="f-notas" placeholder="Algo que queiras dizer ou perguntar..." rows="2"></textarea>
     </div>
-
-<div class="field">
-  <label for="f-Informações Adicionais">Informações Adicionais (opcional)</label>
-  <textarea id="f-Informações Adicionais" placeholder="Algo que queiras dizer ou perguntar..." rows="2"></textarea>
-</div>
 
     <button class="submit-btn" id="submit-btn" type="button" onclick="submitForm()">
       Confirmar inscrição
@@ -67,17 +65,14 @@
   </div>
 
   <div class="success-screen" id="success-screen">
-  <div class="success-icon">
-    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2>Inscrição confirmada!</h2>
+    <p>A tua inscrição foi registada com sucesso.<br>Em breve entraremos em contacto contigo<br>para confirmar o teu horário.</p>
+    <img src="logo.png" alt="Casa da Juventude Guimarães" style="width: 130px; display: block; margin: 2rem auto 0; opacity: 0.8;">
   </div>
-  <h2>Inscrição confirmada!</h2>
-  <p>A tua inscrição foi registada com sucesso.<br>Em breve entraremos em contacto contigo<br>para confirmar o teu horário.</p>
-  <img src="logo.png" alt="Casa da Juventude Guimarães" style="width: 130px; display: block; margin: 2rem auto 0; opacity: 0.8;">
-</div>
 
   <script src="Form.js"></script>
-</body>
-</html>
-
 </body>
 </html>
