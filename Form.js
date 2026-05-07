@@ -26,6 +26,12 @@ function filtrarEscolas() {
 function selecionarEscola(el) {
   document.getElementById('f-escola').value = el.textContent;
   document.getElementById('escola-dropdown').classList.remove('open');
+  document.getElementById('clear-escola').style.display = 'block';
+}
+
+function limparEscola() {
+  document.getElementById('f-escola').value = '';
+  document.getElementById('clear-escola').style.display = 'none';
 }
 
 function buildGrid() {
