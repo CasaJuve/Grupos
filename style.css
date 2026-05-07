@@ -802,3 +802,8 @@ select:focus {
   padding: 2rem;
   position: relative;
 }
+
+.activities-screen .submit-btn,
+.success-screen .submit-btn {
+  margin-bottom: 2.5rem;
+}
