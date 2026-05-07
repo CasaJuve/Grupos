@@ -132,7 +132,7 @@ const dispErr = document.getElementById('disp-err');
 dispErr.style.display = selected.size > 0 ? 'none' : 'block';
   
   const contactoErr = document.getElementById('contacto-err');
-  const contactoValido = /^9\d{8}$/.test(contacto);
+  const contactoValido = /^\+?[0-9\s]{9,15}$/.test(contacto);
   contactoErr.style.display = contactoValido ? 'none' : 'block';
 
   if (!nome || !contactoValido || !turma || !escola || selected.size === 0) {
