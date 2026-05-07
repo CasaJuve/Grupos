@@ -215,4 +215,8 @@ function mostrarFim() {
     <p style="color: var(--ink-soft); font-size:15px; line-height:1.8;">As tuas preferências foram guardadas.<br>Até breve!</p>
   `;
 }
+function setProgress(page) {
+  document.getElementById('progress-bar').style.display = 'block';
+  document.getElementById('progress-text').textContent = `${page} / 3`;
+}
 document.addEventListener('DOMContentLoaded', buildGrid);
