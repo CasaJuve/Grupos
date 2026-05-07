@@ -98,6 +98,34 @@
     <button class="submit-btn" id="activity-btn" onclick="submitActivity()" disabled>Confirmar atividade</button>
     <div id="activity-success" style="display:none; margin-top:1rem; color: var(--green); font-weight:600;">Obrigado! A tua escolha foi guardada ✓</div>
   </div>
+          <div class="activities-screen" id="activities-screen">
+  <h2>Atividades da Casa</h2>
+  <p class="activities-sub">Que atividades estarias interessado em participar?<br><span>Não é obrigatório escolher nenhuma.</span></p>
+
+  <div class="activities-list">
+    <label class="activity-check">
+      <input type="checkbox" value="Dança"> Dança
+    </label>
+    <label class="activity-check">
+      <input type="checkbox" value="Teatro"> Teatro
+    </label>
+    <label class="activity-check">
+      <input type="checkbox" value="Música"> Música
+    </label>
+    <label class="activity-check">
+      <input type="checkbox" value="Desporto"> Desporto
+    </label>
+    <label class="activity-check">
+      <input type="checkbox" value="Artes Plásticas"> Artes Plásticas
+    </label>
+    <label class="activity-check">
+      <input type="checkbox" value="Fotografia"> Fotografia
+    </label>
+  </div>
+
+  <button class="submit-btn" onclick="submitActivitiesCasa()">Confirmar</button>
+  <p class="skip-link" onclick="skipActivitiesCasa()">Saltar este passo</p>
+</div>
 </div>
 
   <script src="Form.js"></script>
