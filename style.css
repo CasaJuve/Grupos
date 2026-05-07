@@ -708,3 +708,75 @@ select:focus {
   border-color: #c1440e;
   box-shadow: 0 0 0 3px rgba(193,68,14,0.15);
 }
+
+.activities-screen {
+  display: none;
+  width: 100%;
+  max-width: 620px;
+  text-align: center;
+  animation: fadeUp .6s ease both;
+}
+
+.activities-screen h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 42px;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.activities-sub {
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.activities-sub span {
+  color: var(--ink-faint);
+  font-size: 13px;
+}
+
+.activities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.activity-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(248,244,238,0.95);
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.activity-check:hover {
+  border-color: rgba(193,68,14,0.22);
+  background: white;
+}
+
+.activity-check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #c1440e;
+  cursor: pointer;
+}
+
+.skip-link {
+  margin-top: 0.8rem;
+  color: var(--ink-faint);
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.skip-link:hover {
+  color: var(--ink-soft);
+}
