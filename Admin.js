@@ -101,13 +101,16 @@ function renderRooms() {
     schoolCard.className = 'school-card';
 
     const schoolHeader = document.createElement('div');
-    schoolHeader.className = 'school-header';
-    schoolHeader.innerHTML = `
-      <div class="room-dot" style="background:${pal.dot}"></div>
-      <div class="room-day">${escola}</div>
-      <div class="room-meta">${pessoas.length} ${pessoas.length === 1 ? 'pessoa' : 'pessoas'}</div>
-    `;
-    schoolCard.appendChild(schoolHeader);
+schoolHeader.className = 'school-header';
+schoolHeader.innerHTML = `
+  <div class="room-dot" style="background:${pal.dot}"></div>
+  <div class="room-day">${escola}</div>
+  <div class="room-meta">${pessoas.length} ${pessoas.length === 1 ? 'pessoa' : 'pessoas'}</div>
+  <div class="room-chevron">▼</div>
+`;
+schoolHeader.style.cursor = 'pointer';
+schoolHeader.onclick = () => schoolCard.classList.toggle('open');
+schoolCard.appendChild(schoolHeader);
 
     // Slots dentro da escola
     const slotsWrap = document.createElement('div');
