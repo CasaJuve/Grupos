@@ -779,3 +779,16 @@ select:focus {
 .skip-link:hover {
   color: var(--ink-soft);
 }
+.progress-bar {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
