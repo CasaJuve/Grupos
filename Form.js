@@ -106,7 +106,7 @@ function toggleHour(btn) {
 
 async function submitForm() {
   const nome     = document.getElementById('f-nome').value.trim();
-  lastNome = nome;
+  lastNome = nome;  
   const contacto = document.getElementById('f-contacto').value.trim();
   const turma    = document.getElementById('f-turma').value.trim();
   const escola   = document.getElementById('f-escola').value.trim();
@@ -154,6 +154,8 @@ async function submitForm() {
   document.getElementById('success-screen').style.display = 'block';
   document.body.style.paddingTop = '1rem';
   setProgress(2);
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 let selectedActivity = null;
@@ -186,6 +188,8 @@ function submitActivity() {
   document.getElementById('activities-screen').style.display = 'block';
   document.body.style.paddingTop = '1rem';
   setProgress(3);
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function submitActivitiesCasa() {
