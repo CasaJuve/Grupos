@@ -47,17 +47,19 @@
           <div class="custom-option" onMouseDown="selecionarEscola(this)">Escola Virginia Moura</div>
         </div>
       </div>
+      <span id="escola-err" style="display:none; color:#c1440e; font-size:12px; margin-top:4px;">Este campo é obrigatório</span>
     </div>
 
     <div class="field">
       <label for="f-turma">Turma</label>
       <input type="text" id="f-turma">
+      <span id="turma-err" style="display:none; color:#c1440e; font-size:12px; margin-top:4px;">Este campo é obrigatório</span>
     </div>
 
     <div class="section-label">Disponibilidade</div>
     <p class="section-hint">Escolhe um dia e seleciona os horários disponíveis (reunião = 1h)</p>
-
     <div id="avail-container"></div>
+   <span id="disp-err" style="display:none; color:#c1440e; font-size:12px; margin-top:4px;">Seleciona pelo menos um horário</span>
 
     <div class="field" style="margin-top: 1.5rem;">
       <label for="f-notas">Informações Adicionais (opcional)</label>
