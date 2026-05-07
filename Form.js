@@ -119,6 +119,9 @@ async function submitForm() {
   const notasEl  = document.getElementById('f-notas');
   const notas    = notasEl ? notasEl.value.trim() : '';
 
+  const nomeErr = document.getElementById('nome-err');
+nomeErr.style.display = nome ? 'none' : 'block';
+
   const contactoErr = document.getElementById('contacto-err');
   const contactoValido = /^9\d{8}$/.test(contacto);
   contactoErr.style.display = contactoValido ? 'none' : 'block';
