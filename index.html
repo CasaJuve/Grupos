@@ -33,6 +33,7 @@
       <label for="f-escola">Escola</label>
       <div class="custom-select" id="escola-wrapper">
         <input type="text" id="f-escola" placeholder="Escreve ou seleciona a escola..." autocomplete="off" onInput="filtrarEscolas()" onFocus="abrirDropdown()" onBlur="fecharDropdown()">
+        <button type="button" id="clear-escola" onclick="limparEscola()" style="display:none; position:absolute; right:14px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; font-size:18px; color:#999;">✕</button>
         <div class="custom-dropdown" id="escola-dropdown">
           <div class="custom-option" onMouseDown="selecionarEscola(this)">Escola Secundária Francisco de Holanda</div>
           <div class="custom-option" onMouseDown="selecionarEscola(this)">Escola Secundária Santos Simões</div>
