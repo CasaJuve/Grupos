@@ -105,8 +105,7 @@ schoolHeader.className = 'school-header';
 schoolHeader.innerHTML = `
   <div class="room-dot" style="background:${pal.dot}"></div>
   <div class="room-day">${escola}</div>
-  <div class="room-meta">${pessoas.length} ${pessoas.length === 1 ? 'pessoa' : 'pessoas'}</div>
-  <div class="room-chevron">▼</div>
+<div class="room-meta">${sortedSlots.length} ${sortedSlots.length === 1 ? 'opção' : 'opções'}</div>  <div class="room-chevron">▼</div>
 `;
 schoolHeader.style.cursor = 'pointer';
 schoolHeader.onclick = () => schoolCard.classList.toggle('open');
