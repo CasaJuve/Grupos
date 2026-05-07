@@ -187,6 +187,7 @@ function submitActivity() {
 }
 
 function submitActivitiesCasa() {
+  document.body.style.paddingTop = '1rem';
   const checked = [...document.querySelectorAll('.activities-list input:checked')]
     .map(c => c.value)
     .join(', ');
