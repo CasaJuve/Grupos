@@ -63,72 +63,101 @@ function renderRooms() {
     return;
   }
 
-  const rooms = {};
+  // Agrupa por escola
+  const schools = {};
   allData.forEach(row => {
-    const disp = row.Disponibilidade || row.disponibilidade || '';
-    const slots = disp.split(',').map(s => s.trim()).filter(Boolean);
-    slots.forEach(slot => {
-      if (!rooms[slot]) rooms[slot] = [];
-      rooms[slot].push(row);
-    });
-  });
-
-  const sortedSlots = Object.keys(rooms).sort((a, b) => {
-    const dayA = normDay(a.split(' ')[0]);
-    const dayB = normDay(b.split(' ')[0]);
-    const hourA = parseInt(a.split(' ')[1]) || 0;
-    const hourB = parseInt(b.split(' ')[1]) || 0;
-    const di = d => DAY_ORDER.indexOf(d);
-    const ia = di(dayA), ib = di(dayB);
-    return ia !== ib ? ia - ib : hourA - hourB;
+    const escola = row.Escola || row.escola || 'Sem escola';
+    if (!schools[escola]) schools[escola] = [];
+    schools[escola].push(row);
   });
 
   const grid = document.createElement('div');
   grid.className = 'rooms-grid';
 
-  sortedSlots.forEach((slot, idx) => {
-    const pal    = PALETTES[idx % PALETTES.length];
-    const people = rooms[slot];
+  Object.keys(schools).sort().forEach((escola, schoolIdx) => {
+    const pal = PALETTES[schoolIdx % PALETTES.length];
+    const pessoas = schools[escola];
 
-    const card = document.createElement('div');
-    card.className = 'room-card';
-    card.style.animationDelay = (idx * 0.05) + 's';
+    // Agrupa por slot dentro da escola
+    const rooms = {};
+    pessoas.forEach(row => {
+      const slots = (row.Disponibilidade || row.disponibilidade || '').split(',').map(s => s.trim()).filter(Boolean);
+      slots.forEach(slot => {
+        if (!rooms[slot]) rooms[slot] = [];
+        rooms[slot].push(row);
+      });
+    });
 
-    const rows = people.map(p => `
-      <tr>
-        <td>
-          <div class="avatar-cell">
-            <div class="avatar" style="background:${pal.bg};color:${pal.text}">${getInitials(p.Nome || p.nome)}</div>
-            <span>${p.Nome || p.nome || ''}</span>
-          </div>
-        </td>
-        <td>${p.Contacto || p.contacto || ''}</td>
-        <td>${p.Turma || p.turma || ''}</td>
-        <td>${p.Escola || p.escola || ''}</td>
-        <td>${p.Notas || p.notas || '—'}</td>
-      </tr>`).join('');
+    const sortedSlots = Object.keys(rooms).sort((a, b) => {
+      const [dayA, hourA] = a.split(' ');
+      const [dayB, hourB] = b.split(' ');
+      const di = d => DAY_ORDER.indexOf(d);
+      const hi = h => parseInt(h);
+      return di(dayA) !== di(dayB) ? di(dayA) - di(dayB) : hi(hourA) - hi(hourB);
+    });
 
-    card.innerHTML = `
-      <div class="room-header" onclick="this.closest('.room-card').classList.toggle('open')">
-        <div class="room-dot" style="background:${pal.dot}"></div>
-        <div class="room-day">${slot}</div>
-        <div class="room-meta">${people.length} ${people.length === 1 ? 'pessoa' : 'pessoas'}</div>
-        <div class="room-chevron">▼</div>
-      </div>
-      <div class="room-body">
-        <table>
-          <thead><tr>
-            <th>Nome</th>
-            <th>Contacto</th>
-            <th>Turma</th>
-            <th>Escola</th>
-            <th>Notas</th>
-          </tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-      </div>`;
+    // Card da escola
+    const schoolCard = document.createElement('div');
+    schoolCard.className = 'school-card';
 
-    grid.appendChild(card);
+    const schoolHeader = document.createElement('div');
+    schoolHeader.className = 'school-header';
+    schoolHeader.innerHTML = `
+      <div class="room-dot" style="background:${pal.dot}"></div>
+      <div class="room-day">${escola}</div>
+      <div class="room-meta">${pessoas.length} ${pessoas.length === 1 ? 'pessoa' : 'pessoas'}</div>
+    `;
+    schoolCard.appendChild(schoolHeader);
+
+    // Slots dentro da escola
+    const slotsWrap = document.createElement('div');
+    slotsWrap.className = 'slots-wrap';
+
+    sortedSlots.forEach((slot, idx) => {
+      const slotPal = PALETTES[idx % PALETTES.length];
+      const slotPeople = rooms[slot];
+
+      const card = document.createElement('div');
+      card.className = 'room-card';
+      card.style.animationDelay = (idx * 0.05) + 's';
+
+      const rows = slotPeople.map(p => `
+        <tr>
+          <td>
+            <div class="avatar-cell">
+              <div class="avatar" style="background:${slotPal.bg};color:${slotPal.text}">${getInitials(p['Nome Completo'] || p.nome)}</div>
+              <span>${p['Nome Completo'] || p.nome}</span>
+            </div>
+          </td>
+          <td>${p.Contacto || p.contacto}</td>
+          <td>${p.Turma || p.turma}</td>
+          <td>${p['Informações Adicionais'] || '—'}</td>
+        </tr>`).join('');
+
+      card.innerHTML = `
+        <div class="room-header" onclick="this.closest('.room-card').classList.toggle('open')">
+          <div class="room-dot" style="background:${slotPal.dot}"></div>
+          <div class="room-day">${slot}</div>
+          <div class="room-meta">${slotPeople.length} ${slotPeople.length === 1 ? 'pessoa' : 'pessoas'}</div>
+          <div class="room-chevron">▼</div>
+        </div>
+        <div class="room-body">
+          <table>
+            <thead><tr>
+              <th>Nome</th>
+              <th>Contacto</th>
+              <th>Turma</th>
+              <th>Informações Adicionais</th>
+            </tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>`;
+
+      slotsWrap.appendChild(card);
+    });
+
+    schoolCard.appendChild(slotsWrap);
+    grid.appendChild(schoolCard);
   });
 
   container.innerHTML = '';
