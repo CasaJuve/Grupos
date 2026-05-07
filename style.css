@@ -807,3 +807,6 @@ select:focus {
 .success-screen .submit-btn {
   margin-bottom: 2.5rem;
 }
+.card .submit-btn {
+  margin-bottom: 2.5rem;
+}
