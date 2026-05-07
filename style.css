@@ -676,11 +676,10 @@ select:focus {
   gap: 12px;
   margin-bottom: 1.2rem;
 }
-
 .activity-card {
   border-radius: 20px;
   overflow: hidden;
-  border: 2px solid rgb(75, 70, 70);
+  border: 2px solid transparent;
   cursor: pointer;
   transition: border-color 0.15s, transform 0.15s;
   background: rgba(248,244,238,0.95);
