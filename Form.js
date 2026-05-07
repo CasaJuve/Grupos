@@ -185,6 +185,7 @@ function submitActivity() {
   document.getElementById('success-screen').style.display = 'none';
   document.getElementById('activities-screen').style.display = 'block';
   document.body.style.paddingTop = '1rem';
+  setProgress(3);
 }
 
 function submitActivitiesCasa() {
