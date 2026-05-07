@@ -152,7 +152,8 @@ async function submitForm() {
   document.getElementById('form-card').style.display = 'none';
   document.querySelector('.header').style.display = 'none';
   document.getElementById('success-screen').style.display = 'block';
-    document.body.style.paddingTop = '1rem';
+  document.body.style.paddingTop = '1rem';
+  setProgress(2);
 }
 
 let selectedActivity = null;
