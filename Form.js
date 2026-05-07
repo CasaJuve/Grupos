@@ -221,4 +221,8 @@ function setProgress(page) {
   document.getElementById('progress-bar').style.display = 'block';
   document.getElementById('progress-text').textContent = `${page} / 3`;
 }
-document.addEventListener('DOMContentLoaded', buildGrid);
+
+ document.addEventListener('DOMContentLoaded', () => {
+  buildGrid();
+  document.getElementById('progress-bar-1').style.display = 'block';
+});
