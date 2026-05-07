@@ -183,11 +183,10 @@ function submitActivity() {
   // Mostra a 3ª página
   document.getElementById('success-screen').style.display = 'none';
   document.getElementById('activities-screen').style.display = 'block';
-  document.body.style.paddingTop = '3rem';
+  document.body.style.paddingTop = '1rem';
 }
 
 function submitActivitiesCasa() {
-  document.body.style.paddingTop = '1rem';
   const checked = [...document.querySelectorAll('.activities-list input:checked')]
     .map(c => c.value)
     .join(', ');
