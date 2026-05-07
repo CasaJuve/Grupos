@@ -122,6 +122,15 @@ async function submitForm() {
   const nomeErr = document.getElementById('nome-err');
 nomeErr.style.display = nome ? 'none' : 'block';
 
+  const escolaErr = document.getElementById('escola-err');
+escolaErr.style.display = escola ? 'none' : 'block';
+
+const turmaErr = document.getElementById('turma-err');
+turmaErr.style.display = turma ? 'none' : 'block';
+
+const dispErr = document.getElementById('disp-err');
+dispErr.style.display = selected.size > 0 ? 'none' : 'block';
+  
   const contactoErr = document.getElementById('contacto-err');
   const contactoValido = /^9\d{8}$/.test(contacto);
   contactoErr.style.display = contactoValido ? 'none' : 'block';
