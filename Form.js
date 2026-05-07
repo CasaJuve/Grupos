@@ -218,8 +218,8 @@ function mostrarFim() {
   `;
 }
 function setProgress(page) {
-  document.getElementById('progress-bar').style.display = 'block';
-  document.getElementById('progress-text').textContent = `${page} / 3`;
+  if (page === 2) document.getElementById('progress-bar').style.display = 'block';
+  if (page === 3) document.getElementById('progress-bar-3').style.display = 'block';
 }
 
  document.addEventListener('DOMContentLoaded', () => {
