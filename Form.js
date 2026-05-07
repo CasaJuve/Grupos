@@ -170,20 +170,49 @@ function submitActivity() {
   document.getElementById('activity-btn').disabled = true;
 
   const url = `${SHEET_URL}/Nome%20Completo/${encodeURIComponent(lastNome)}`;
-  console.log('PATCH URL:', url);
-  console.log('Atividade:', selectedActivity);
 
   fetch(url, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ data: { 'Atividade': selectedActivity } })
-  })
-  .then(r => r.json())
-  .then(d => console.log('Resposta:', d))
-  .catch(e => console.error('Erro:', e));
+  }).catch(() => {});
 
-  document.getElementById('activity-success').style.display = 'block';
   document.getElementById('activity-btn').style.display = 'none';
   document.querySelectorAll('.activity-card').forEach(c => c.style.pointerEvents = 'none');
+
+  // Mostra a 3ª página
+  document.getElementById('success-screen').style.display = 'none';
+  document.getElementById('activities-screen').style.display = 'block';
+  document.body.style.paddingTop = '3rem';
+}
+
+function submitActivitiesCasa() {
+  const checked = [...document.querySelectorAll('.activities-list input:checked')]
+    .map(c => c.value)
+    .join(', ');
+
+  const url = `${SHEET_URL}/Nome%20Completo/${encodeURIComponent(lastNome)}`;
+
+  fetch(url, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data: { 'Atividades da Casa': checked || 'Nenhuma' } })
+  }).catch(() => {});
+
+  mostrarFim();
+}
+
+function skipActivitiesCasa() {
+  mostrarFim();
+}
+
+function mostrarFim() {
+  document.getElementById('activities-screen').innerHTML = `
+    <div class="success-icon" style="margin: 0 auto 1.5rem;">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2>Obrigado!</h2>
+    <p style="color: var(--ink-soft); font-size:15px; line-height:1.8;">As tuas preferências foram guardadas.<br>Até breve!</p>
+  `;
 }
 document.addEventListener('DOMContentLoaded', buildGrid);
