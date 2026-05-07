@@ -96,21 +96,22 @@ function renderRooms() {
       return di(dayA) !== di(dayB) ? di(dayA) - di(dayB) : hi(hourA) - hi(hourB);
     });
 
-    // Card da escola
+    // Card da escola — agora sortedSlots já existe
     const schoolCard = document.createElement('div');
     schoolCard.className = 'school-card';
 
     const schoolHeader = document.createElement('div');
-schoolHeader.className = 'school-header';
-schoolHeader.innerHTML = `
-  <div class="room-dot" style="background:${pal.dot}"></div>
-  <div class="room-day">${escola}</div>
-<div class="room-meta">${sortedSlots.length} ${sortedSlots.length === 1 ? 'opção' : 'opções'}</div>  <div class="room-chevron">▼</div>
-`;
-schoolHeader.style.cursor = 'pointer';
-schoolHeader.onclick = () => schoolCard.classList.toggle('open');
-schoolCard.appendChild(schoolHeader);
-
+    schoolHeader.className = 'school-header';
+    schoolHeader.innerHTML = `
+      <div class="room-dot" style="background:${pal.dot}"></div>
+      <div class="room-day">${escola}</div>
+      <div class="room-meta">${sortedSlots.length} ${sortedSlots.length === 1 ? 'opção' : 'opções'}</div>
+      <div class="room-chevron">▼</div>
+    `;
+    schoolHeader.style.cursor = 'pointer';
+    schoolHeader.onclick = () => schoolCard.classList.toggle('open');
+    schoolCard.appendChild(schoolHeader);
+    
     // Slots dentro da escola
     const slotsWrap = document.createElement('div');
     slotsWrap.className = 'slots-wrap';
