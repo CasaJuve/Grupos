@@ -396,12 +396,15 @@ textarea:focus {
   width: 100%;
   max-width: 620px;
   text-align: center;
-  padding-top: 1rem; 
   animation: fadeUp .6s ease both;
-  margin-top: -2rem;
-  padding-top: 1rem;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.5);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 20px 60px rgba(0,0,0,0.06);
+  border-radius: 28px;
+  padding: 2rem;
+  position: relative;
 }
-
 .success-icon {
   width: 90px;
   height: 90px;
@@ -714,6 +717,13 @@ select:focus {
   max-width: 620px;
   text-align: center;
   animation: fadeUp .6s ease both;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.5);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 20px 60px rgba(0,0,0,0.06);
+  border-radius: 28px;
+  padding: 2rem;
+  position: relative;
 }
 
 .activities-screen h2 {
