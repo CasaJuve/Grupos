@@ -737,8 +737,8 @@ select:focus {
 }
 
 .activities-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-bottom: 1.5rem;
   text-align: left;
